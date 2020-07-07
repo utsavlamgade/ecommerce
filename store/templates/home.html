@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 
+Home
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <img src="{% static 'img/image.jpg' %}" width="1450" height="350" alt="Computer Hope" alt=""> -->
+            <img style="width: 100%" src=" {% static 'img/image.jpg' %} " alt="Hero Image ">
+        </div>
+    </div>
+<div class="py4">
+    <div class="container">
+        <div class="row">
+           <div class="col-10 mx-auto my-2 text-center">
+            <h1 class="text-capitalize font-weight-bold">
+                All Products
+            </h1>
+           </div> 
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-9 mx-auto col-md-6 col-lg-3">
+          <div class="card md-4" style="border-color: transparent;">
+            <div class="p-4"></div>
+            <img src="{% if product.image %}{{ product.image.url }}{% else %} {% static 'img/6.jpg' %}
+            {% endif %}">
+            <!-- <img src="/Users/Code/Documents/TermIII/final/ecommerce_project/static/media/product/7.jpg" alt="image text description"> -->
+
+             <!-- <img src="{{products.image.url}}" class="card-img-top" alt="{{product.name}}"> -->
+            </div>
+             <div class="card-footer d-flex justify-content-between"
+             style="background: transparent; border-color: transparent;">
+                 <p class="font-weight-bold mb-0">
+                    {{product.name}}
+                 </p>
+                 <h5 class="text-info font-italic mb-0">
+                  <span class="mr-1">$</span> {{product.price}}   
+                 </h5>
+             </div>
+          </div>
+      </div>
+
+      {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
